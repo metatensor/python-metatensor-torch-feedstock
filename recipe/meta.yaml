@@ -1,13 +1,14 @@
 {% set name = "metatensor-torch" %}
-{% set version = "0.7.5" %}
+{% set version = "0.9.0.rc5" %}
+{% set upstream_version = "0.9.0rc5" %}
 
 package:
   name: python-{{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/metatensor_torch-{{ version }}.tar.gz
-  sha256: d5180d90e9645d604d7e4817737298565d9d4a95aff7ad9e6407d3b9a5376b13
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/metatensor_torch-{{ upstream_version }}.tar.gz
+  sha256: ac3fd68939b59f5a432fa08d8fc5491cd239dab10a656bc3c263fcc9bdecf0e9
 
 build:
   # conda-forge's libtorch is not yet available on Windows
@@ -34,15 +35,15 @@ requirements:
     # (torch's CMake targets tries to find CUDA compilers even when there is no CUDA
     # code to build). This does not impact the `run` dependency, since torch's
     # `run_exports` are variant agnostic
-    - pytorch =*=cpu*
+    - pytorch =2.10.*=cpu*
     - pip
     - libmetatensor-torch {{ version }}
-    - python-metatensor-core >=0.1.10,<0.2.0
+    - python-metatensor-core >=0.2.0.rc3,<0.3.0
   run:
     - python
-    - pytorch
+    - pytorch =2.10.*=cpu*
     - libmetatensor-torch {{ version }}
-    - python-metatensor-core >=0.1.10,<0.2.0
+    - python-metatensor-core >=0.2.0.rc3,<0.3.0
     - python-vesin
 
 test:
