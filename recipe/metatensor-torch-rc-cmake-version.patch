@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -33,7 +33,7 @@ if(${METATENSOR_TORCH_PYTHON_USE_EXTERNAL_LIB})
+         )
+     endif()
+ 
+-    find_package(metatensor_torch ${REQUIRED_METATENSOR_TORCH_VERSION} REQUIRED)
++    find_package(metatensor_torch REQUIRED)
+ 
+     get_target_property(METATENSOR_TORCH_LOCATION metatensor_torch LOCATION)
+     message(STATUS "Using external metatensor-torch v${metatensor_torch_VERSION} at ${METATENSOR_TORCH_LOCATION}")

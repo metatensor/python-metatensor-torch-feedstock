@@ -9,6 +9,8 @@ package:
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/metatensor_torch-{{ upstream_version }}.tar.gz
   sha256: ac3fd68939b59f5a432fa08d8fc5491cd239dab10a656bc3c263fcc9bdecf0e9
+  patches:
+    - metatensor-torch-rc-cmake-version.patch
 
 build:
   # conda-forge's libtorch is not yet available on Windows
